@@ -1,1 +1,1 @@
-## implemented sorting algorithm
+## implemented sorting algorithm using GUI python TKinter
