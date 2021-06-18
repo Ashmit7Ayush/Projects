@@ -29,7 +29,7 @@ def draw_data(data,color_array):
 
     canvas_height=666
     canvas_width=777
-    bar_width=canvas_width/(len(data)+1)# as for the different data set
+    bar_width=canvas_width/(len(data))# as for the different data set
     offset=21
     spacing=7# bt/n the bars
 
@@ -63,29 +63,32 @@ def Generator():
     
     
     
-    data=[random.randrange(min_value,max_value+1) for x in range(size)]
+    data=[random.randrange(min_value,max_value) for x in range(size)]
 
-    # 12-6-20 changed the color code from red to #6600CC/#003399
     draw_data(data,['#B71C1C' for x in range(len(data))])
 
 def Start_Algo():
     global data
-    print(data)
+    speed = speed_scale.get()
+    speed = 100 - speed
+    speed=speed/1000
+    # speed_scale.set(speed)
+    # print(data)
     if selected_alg.get()=='BUBBLE_SORT':
-        Bubble_sort(data,draw_data,speed_scale.get())
+        Bubble_sort(data,draw_data,speed)
     # here speed_scale is for the manually speed
 
     elif selected_alg.get()=='SELECTION_SORT':
-        Selection_sort(data,draw_data,speed_scale.get())
+        Selection_sort(data,draw_data,speed)
     
     elif selected_alg.get()=='Merge_Sort':
-        Merge_sort(data,0,len(data),draw_data,speed_scale.get())
+        Merge_sort(data,0,len(data),draw_data,speed)
 
     elif selected_alg.get()=='QUICK_SORT':
-        Quick_sort(data,0,len(data)-1,draw_data,speed_scale.get())
+        Quick_sort(data,0,len(data)-1,draw_data,speed)
     
     elif selected_alg.get()=='QUICK_SORT_3WAY':
-        QQuick_sort_3way(data,0,len(data)-1,draw_data,speed_scale.get())
+        QQuick_sort_3way(data,0,len(data)-1,draw_data,speed)
 
     draw_data(data,['#6633FF' for x in range(len(data))])# 00FF33
 
@@ -117,7 +120,7 @@ algo_menu.current(0)
 
 
 # speed manager   
-speed_scale=Scale(upper_frame,from_=0.00, to=.50,length=200,digits=3,resolution=0.01,orient=HORIZONTAL,label='SPEED' )
+speed_scale=Scale(upper_frame,from_=1, to=100,length=200,digits=3,resolution=1,orient=HORIZONTAL,label='SPEED' )
 speed_scale.grid(row=0,column=2,padx=7,pady=5)
 
 start_algo=Button(upper_frame,text='Start',command=Start_Algo,bg='red')
@@ -127,15 +130,15 @@ start_algo.grid(row=0,column=3,padx=7,pady=5)
 # because want to create the slider
 
 # now for the size and the various thing min,max
-size_entry=Scale(upper_frame,from_=5,to=100,resolution=1,length=200,orient=HORIZONTAL,label='size')
+size_entry=Scale(upper_frame,from_=25,to=90,resolution=1,length=200,orient=HORIZONTAL,label='size')
 size_entry.grid(row=1,column=0,padx=7,pady=5,ipadx=3)
 
 # for the min also
-mini_entry=Scale(upper_frame,from_=0,to=100,resolution=1,length=200,orient=HORIZONTAL,label='MINIMUM VALUE')
+mini_entry=Scale(upper_frame,from_=1,to=10,resolution=1,length=200,orient=HORIZONTAL,label='MINIMUM VALUE')
 mini_entry.grid(row=1,column=1,padx=7,pady=5,ipadx=3)
 
 # for the max
-maxi_entry=Scale(upper_frame,from_=10,to=1000,resolution=1,length=200,orient=HORIZONTAL,label='MAXIMUM VALUE')
+maxi_entry=Scale(upper_frame,from_=10,to=100,resolution=1,length=200,orient=HORIZONTAL,label='MAXIMUM VALUE')
 maxi_entry.grid(row=1,column=2,padx=7,pady=5,ipadx=3)
 
 
