@@ -97,7 +97,6 @@ upper_frame = Frame(root, width=777, height=333,bg='grey')
 upper_frame.grid(row=0,column=0)
 
 # canvas
-# 12-06-20 color from skyblue to 
 canvas = Canvas(root,width=777, height=666,bg='#000000')
 canvas.grid(row=1,column=0,padx=7,pady=3)
 
@@ -105,12 +104,10 @@ canvas.grid(row=1,column=0,padx=7,pady=3)
 
 # user interface area
 # row 0
-# 12-6-20 changed the width
 label=Label(upper_frame,text='SELECT ALGORITHM: ',bg='grey',width=27)
 label.grid(row=0,column=0,padx=3,pady=5,sticky=W,ipadx=0)# stick in the west
 
 # algorithm menu
-# 12-6-20 changed the width
 algo_menu=ttk.Combobox(upper_frame,textvariable=selected_alg,values=['Merge_Sort','QUICK_SORT','BUBBLE_SORT','SELECTION_SORT','QUICK_SORT_3WAY'],width=30)
 algo_menu.grid(row=0,column=1,padx=7,pady=5,ipadx=3,ipady=5)# here selected_alg will be the 
 # selected one from the options
@@ -120,7 +117,6 @@ algo_menu.current(0)
 
 
 # speed manager   
-# 12-06-2020 modification on length
 speed_scale=Scale(upper_frame,from_=0.00, to=.50,length=200,digits=3,resolution=0.01,orient=HORIZONTAL,label='SPEED' )
 speed_scale.grid(row=0,column=2,padx=7,pady=5)
 
@@ -131,27 +127,14 @@ start_algo.grid(row=0,column=3,padx=7,pady=5)
 # because want to create the slider
 
 # now for the size and the various thing min,max
-# size=Label(upper_frame,text='SIZE',bg='grey')
-# size.grid(row=1,column=0,padx=7,pady=5,ipadx=3,sticky=W)
-# now the entr for the size
-# size_entry=Entry(upper_frame)
-# 12-6-20 changed the length
 size_entry=Scale(upper_frame,from_=5,to=100,resolution=1,length=200,orient=HORIZONTAL,label='size')
 size_entry.grid(row=1,column=0,padx=7,pady=5,ipadx=3)
 
 # for the min also
-# mini=Label(upper_frame,text='MIN',bg='grey')
-# mini.grid(row=1,column=2,padx=7,pady=5,ipadx=3,sticky=W)
-# mini_entry=Entry(upper_frame)
-# 12-6-20 changed the length
 mini_entry=Scale(upper_frame,from_=0,to=100,resolution=1,length=200,orient=HORIZONTAL,label='MINIMUM VALUE')
 mini_entry.grid(row=1,column=1,padx=7,pady=5,ipadx=3)
 
 # for the max
-# maxi=Label(upper_frame,text='MAX',bg='grey')
-# maxi.grid(row=1,column=4,padx=7,pady=5,ipadx=3,sticky=W)
-# maxi_entry=Entry(upper_frame)
-# 12-6-20 changed the length
 maxi_entry=Scale(upper_frame,from_=10,to=1000,resolution=1,length=200,orient=HORIZONTAL,label='MAXIMUM VALUE')
 maxi_entry.grid(row=1,column=2,padx=7,pady=5,ipadx=3)
 
